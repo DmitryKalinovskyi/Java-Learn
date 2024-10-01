@@ -6,20 +6,7 @@ public class Task6{
             throw new IllegalArgumentException("n should be non-negative number");
         }
 
-        if(n <= 2){
-            // print two times n ones
-            for(int i = 0; i < n; i++){
-                System.out.print("1 ");
-            }
-            System.out.println();
-            for(int i = 0; i < n; i++){
-                System.out.print("1 ");
-            }
-            System.out.println();
-            return;
-        }
-
-        int[] fibonacci = new int[n];
+        int[] fibonacci = new int[Math.max(2, n)];
         fibonacci[0] = fibonacci[1] = 1;
 
         for(int i = 2; i < n; i++)
@@ -29,7 +16,7 @@ public class Task6{
             System.out.print(fibonacci[i] + " ");
         }
         System.out.println();
-        for(int i = n -1; i>=0; i--){
+        for(int i = n - 1; i>=0; i--){
             System.out.print(fibonacci[i] + " ");
         }
         System.out.println();
