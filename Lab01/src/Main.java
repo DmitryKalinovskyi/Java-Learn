@@ -16,7 +16,7 @@ public class Main {
 
         System.out.println("Task 2");
 
-        System.out.println("Enter 2 numbers: ");
+        System.out.println("Enter 2 numbers to compute their sum: ");
         int num1 = scan.nextInt();
         int num2 = scan.nextInt();
 
@@ -26,19 +26,19 @@ public class Main {
         Task3.main(new String[]{"2", "3", "4", "5"});
 
         System.out.println("Task 4");
-        System.out.println("Enter 2 numbers: ");
+        System.out.println("Enter 2 numbers to compute their gcd: ");
         num1 = scan.nextInt();
         num2 = scan.nextInt();
 
         System.out.printf("gcd of(%s, %s) = %s%n", num1, num2, Task4.gcd(num1, num2));
 
         System.out.println("Task 5");
-        System.out.println("Enter number: ");
+        System.out.println("Enter number to compute digit sum: ");
         int num = scan.nextInt();
         System.out.printf("Digit sum of %s = %s%n", num, Task5.sumDigits(num));
 
         System.out.println("Task 6");
-        System.out.println("Enter number: ");
+        System.out.println("Enter size of fibonacci sequence: ");
         int n = scan.nextInt();
         Task6.printFibonacci(n);
 
