@@ -5,6 +5,7 @@ import com.education.ztu.spring.repository.TodoItemRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -15,6 +16,10 @@ public class TodoService {
 
     public TodoService(TodoItemRepository todoItemRepository) {
         this.todoItemRepository = todoItemRepository;
+    }
+
+    public Optional<TodoItem> getTodoItemById(long id){
+        return todoItemRepository.findTodoItemById(id).stream().findAny();
     }
 
     public List<TodoItem> getAllTodoItems() {

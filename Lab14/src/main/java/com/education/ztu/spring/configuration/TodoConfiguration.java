@@ -8,12 +8,17 @@ import org.springframework.context.annotation.Configuration;
 public class TodoConfiguration {
 
     private String title;
+    private String updatePageTitle;
 
     public String getTitle() {
         return title;
     }
 
+    public String getUpdatePageTitle() {return updatePageTitle; }
+
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public void setUpdatePageTitle(String updatePageTitle) {this.updatePageTitle = updatePageTitle;}
 }

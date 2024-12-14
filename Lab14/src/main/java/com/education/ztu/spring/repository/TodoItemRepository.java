@@ -12,6 +12,9 @@ import java.util.List;
 @Repository
 public interface TodoItemRepository extends CrudRepository<TodoItem, Long> {
 
+    @Query("SELECT * FROM todo_items where id = :id")
+    List<TodoItem> findTodoItemById(@Param("id") long id);
+
     @Query("SELECT * FROM todo_items WHERE is_completed = :is_completed")
     List<TodoItem> findAllWhereCompleted(@Param("is_completed") boolean isCompleted);
 

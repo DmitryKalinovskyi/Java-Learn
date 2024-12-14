@@ -7,17 +7,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/todo")
 public class TodoItemController {
     private final TodoService todoService;
+    private final TodoConfiguration todoConfiguration;
 
-    public TodoItemController(TodoService todoService) {
+    public TodoItemController(TodoConfiguration todoConfiguration, TodoService todoService) {
         this.todoService = todoService;
+        this.todoConfiguration = todoConfiguration;
     }
 
-    // Forms can't use put method so i used Post mapping instead
-//    @PutMapping
+    @GetMapping("update/{id}")
+    public String getUpdatePage(@PathVariable("id") long id, Model model){
+        Optional<TodoItem> todoItem = todoService.getTodoItemById(id);
+
+        if(todoItem.isEmpty()) {
+            model.addAttribute("message", "Todo item with id " + id + " is not founded.");
+            return "404";
+        }
+
+        model.addAttribute("title", todoConfiguration.getTitle());
+        model.addAttribute("todoItem", todoItem.get());
+
+        return "edit-page.html";
+    }
+
     @PostMapping("update")
     public String updateTodoItem(@ModelAttribute TodoItem todoItem, Model model){
         todoService.updateTodoItem(todoItem);
@@ -25,10 +42,8 @@ public class TodoItemController {
         return "redirect:/";
     }
 
-    // Forms can't use delete method so i used Post mapping instead
-//    @DeleteMapping
     @PostMapping("delete")
-    public String deleteTodoItem(@RequestParam("id") Long id) {
+    public String deleteTodoItem(@RequestParam("id") long id) {
         todoService.deleteTodoItem(id);
         return "redirect:/";
     }
