@@ -30,7 +30,7 @@ public class MainPageController {
     }
 
     @PostMapping
-    public String todoItemSubmit(@ModelAttribute TodoItem item, Model model) {
+    public String todoItemSubmit(@ModelAttribute TodoItem item) {
         todoService.saveTodoItem(item);
         return "redirect:/";
     }

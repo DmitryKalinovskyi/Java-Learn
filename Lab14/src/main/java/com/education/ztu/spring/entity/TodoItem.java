@@ -11,7 +11,7 @@ public class TodoItem {
     private Long id;
 
     @Column(value = "name")
-    private String data;
+    private String name;
 
     @Column(value = "is_completed")
     private Boolean isCompleted;
@@ -24,19 +24,19 @@ public class TodoItem {
         this.id = id;
     }
 
-    public String getData() {
-        return data;
+    public String getName() {
+        return name;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Boolean getCompleted() {
+    public Boolean getIsCompleted() {
         return isCompleted;
     }
 
-    public void setCompleted(Boolean completed) {
-        isCompleted = completed;
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
     }
 }

@@ -18,4 +18,10 @@ public interface TodoItemRepository extends CrudRepository<TodoItem, Long> {
     @Modifying
     @Query("DELETE FROM todo_items WHERE id = :todo_id")
     void deleteTodoItemById(@Param("todo_id") Long id);
+
+    @Modifying
+    @Query("UPDATE todo_items SET name = :name, is_completed = :isCompleted WHERE id = :id")
+    void updateTodoItemById(@Param("id") Long id,
+                            @Param("name") String name,
+                            @Param("isCompleted") Boolean isCompleted);
 }

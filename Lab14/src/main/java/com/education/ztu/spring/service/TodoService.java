@@ -26,4 +26,14 @@ public class TodoService {
     public void saveTodoItem(TodoItem todoItem) {
         todoItemRepository.save(todoItem);
     }
+
+    public void updateTodoItem(TodoItem todoItem){
+        todoItemRepository.updateTodoItemById(todoItem.getId(),
+                todoItem.getName(),
+                todoItem.getIsCompleted());
+    }
+
+    public void deleteTodoItem(long id){
+        todoItemRepository.deleteById(id);
+    }
 }

@@ -36,8 +36,18 @@
 
                         <ul class="list-group rounded-0 pb-2" th:if="${not #lists.isEmpty(todos)}" th:each="t: ${todos}">
                             <li class="list-group-item border-0 d-flex align-items-center ps-0" >
-                                <input class="form-check-input me-3" type="checkbox" value="" aria-label="..." th:checked="${t.completed}" />
-                                <span th:text="${t.data}"></span>
+                                <form method="POST" th:action="@{/todo/update}">
+                                    <input type="hidden" name="id" th:value="${t.id}" />
+                                    <input type="hidden" name="name" th:value="${t.name}" />
+                                    <input class="form-check-input me-3" type="checkbox" name="isCompleted" value="true" th:checked="${t.isCompleted}"
+                                           onchange="this.form.submit()" />
+                                </form>
+                                <span th:text="${t.name}"></span>
+                                <form method="POST" th:action="@{/todo/delete}">
+                                    <input type="hidden" name="id" th:value="${t.id}"/>
+                                    <button class="btn btn-danger ms-2">delete</button>
+                                </form>
+
                             </li>
                         </ul>
 
@@ -45,7 +55,7 @@
 
                             <form class="d-flex justify-content-center align-items-center mb-4" method="POST" th:object="${todo}" th:action="@{/}">
                                 <div data-mdb-input-init class="form-outline flex-fill">
-                                    <input type="text" id="form2" class="form-control" th:field="*{data}" />
+                                    <input type="text" id="form2" class="form-control" th:field="*{name}" />
                                 </div>
                                 <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-info ms-2">Add</button>
                             </form>
